@@ -1,6 +1,6 @@
 /*
 INF1600 - TP3 - Visualisation de la serie de Mandelbrot
-Matricules: 
+Matricules: 2324529, 2108889
 Date: 
 Version: 1.0
 Description:
