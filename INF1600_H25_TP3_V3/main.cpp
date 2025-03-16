@@ -6,11 +6,14 @@ Version: 1.0
 Description: Visualisation d'un calcul recursif de la serie de Mandelbrot a l'aide de Raylib. 
              Noter que ce code n'est pas optimise, mais sert uniquement a un but academique.
 */
+#include <iostream>
+using namespace std;
+#include "raylib/include/raylib.h"
+#include "include/draw.hpp"
+#include "include/mandelbrot.hpp"
+#include "include/tests.hpp"
 
-#include "raylib.h"
-#include "draw.hpp"
-#include "mandelbrot.hpp"
-#include "tests.hpp"
+#include "include/complex.hpp"
 
 int main() {
 
@@ -19,7 +22,7 @@ int main() {
     Ceci est pour tester l'installation de vos dependances
     */
 
-    // drawInit(); // Commenter cet appel si le tout compile.
+    drawInit(); // Commenter cet appel si le tout compile.
 
 
     ///////////////////////////    PARTIE 1: TODO    ///////////////////////////
@@ -27,6 +30,9 @@ int main() {
     Vous devez completer les fichiers assembleurs fournis dans le repertoire /src_TODO
     Vous pouvez utiliser cet espace libre pour faire des appels à vos fonctions pour les tester.
     */
+    Complex nbComplexe = Complex(3,4);
+    cout << nbComplexe << endl;
+    
 
     ///////////////////////////   PARTIE 2: TESTS   ////////////////////////////
     /*
@@ -38,6 +44,6 @@ int main() {
 
     /////////////////////////// PARTIE 3: AFFICHAGE ///////////////////////////
 
-    // drawMandelbrot(); // Decommenter cet appel pour visualiser votre fonction recursive!
+    drawMandelbrot(); // Decommenter cet appel pour visualiser votre fonction recursive!
 
 }

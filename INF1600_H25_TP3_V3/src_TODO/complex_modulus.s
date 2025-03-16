@@ -37,8 +37,15 @@ _ZNK7Complex7modulusEv:
 
     // pas de paramètres, donc appel direct des fonctions
 
+
+    // récupération de la valeur de l'objet 
+    movl 8(%ebp), %ebx # pour que l'objet soit passé en argument 
+
+
+    pushl %ebx #pour passer le this comme un argument 
     // appel de la fonction pour avoir la valeur réelle 
     call _ZNK7Complex8realPartEv # va mettre le résultat dans le premier registre de la FPU ST[0]
+    add $4, %esp #pour nettoyer la pile
 
     // calcul de la partie réelle au carré (se trouve dans ST[1])
     // chargement de cette même valeur au dessus de la pile 
@@ -50,9 +57,13 @@ _ZNK7Complex7modulusEv:
         // mets la nouvelle valeur dans st(0) et dépile ce qui a dans st(1)
     
     
+    // passage de l'objet this comme argument 
+    pushl %ebx 
     // appel de la fonction pour avoir la partie complexe 
     call _ZNK7Complex8imagPartEv # va mettre le résultat dans le premier registre de la FPU ST[0]
         // décalage de la valeur de l'autre résultat de la valeur réelle dans ST[1]
+    // nettoyage de la pile
+    add $4, %esp 
 
     fld %st(0) # va décaler partie réelle dans st(2), le résultat du call dans st(1) et le nouveau placement
     // dans st(0)
