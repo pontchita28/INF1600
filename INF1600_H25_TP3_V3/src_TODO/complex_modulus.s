@@ -42,27 +42,29 @@ _ZNK7Complex7modulusEv:
 
     // calcul de la partie réelle au carré (se trouve dans ST[1])
     // chargement de cette même valeur au dessus de la pile 
-    flds
-    fmulp %ST(1), %ST(1) # multiplication de la valeur qui se trouve dans cette adresse par elle-même
-    
-    
-    
+    fld %st(0)
+
+    // faire la multiplication de st(0) et st(1) pour avoir le carré
+
+    fmulp %st(1), %st(0) # multiplication de la valeur qui se trouve dans cette adresse par elle-même
+        // mets la nouvelle valeur dans st(0) et dépile ce qui a dans st(1)
     
     
     // appel de la fonction pour avoir la partie complexe 
     call _ZNK7Complex8imagPartEv # va mettre le résultat dans le premier registre de la FPU ST[0]
-        // décalage de la valeur orginale de la valeur réelle dans ST[1]
+        // décalage de la valeur de l'autre résultat de la valeur réelle dans ST[1]
 
-    
-    
-    // calcul de la partie complexe au carré (se trouve exactement à esp)
-    fmulp %st(0), %st(0) # multiplication de la valeur qui se touve dans cette adresse par elle-même
+    fld %st(0) # va décaler partie réelle dans st(2), le résultat du call dans st(1) et le nouveau placement
+    // dans st(0)
 
-    // addition des deux valeurs pour la mettre au top de la FPU, donc ST(0)
-    faddp %st(1), %st(0) # addition de ST(1) + ST(0) pour la mettre dans ST(0)
+    fmulp %st(1), %st(0) #st(0) sera vide 
+
+    // partie reelle dans st(2) et image dans st(1) sous la forme de carrés
+
+    faddp %st(1), %st(0) # addition de ST(1) + ST(2) pour la mettre dans ST(1)
 
     // faire une racine carrée du résultat 
-    fsqrt %st(0), %st(0) # retourner la valeur de la racine carrée dans ST(0)
+    fsqrt  # retourner la valeur de la racine carrée dans ST(0) implicitement 
 
     // comme on veut retourner un flottant, on laisse la valeur dans ST(0)
 
