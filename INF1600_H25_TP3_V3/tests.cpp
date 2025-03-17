@@ -12,9 +12,9 @@ Description: Tests automatises.
 #include <iomanip>
 #include <random>
 #include <string>
-#include "complex.hpp"
-#include "mandelbrot.hpp"
-#include "tests.hpp"
+#include "include/complex.hpp"
+#include "include/mandelbrot.hpp"
+#include "include/tests.hpp"
 
 const std::string ansiColorRed = "\x1b[31m";
 const std::string ansiColorGreen = "\x1b[32m";

@@ -8,8 +8,8 @@ Description: Visualisation de la serie de Mandelbrot a l'aide de Raylib .
 
 ////////////// NE PAS MODIFIER CE QUI SUIT //////////////////
 
-#include "draw.hpp"
-#include "mandelbrot.hpp"
+#include "include/draw.hpp"
+#include "include/mandelbrot.hpp"
 
 Color GetColorFromIteration(int iteration);
 

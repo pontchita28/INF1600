@@ -51,9 +51,7 @@ _ZplRK7ComplexS1_:
 
     # Partie imaginaire
     pushl   %ebx  # Passer l'adresse du premier objet (this)
-    pusha
     call    _ZNK7Complex8imagPartEv
-    popa
     addl    $4, %esp  # Équilibrer la pile après l'appel
     fstps   -16(%ebp)  # Stocker la valeur float sur la pile
 
@@ -64,16 +62,19 @@ _ZplRK7ComplexS1_:
     faddp   %st(1), %st(0)  # Additionner les parties imaginaires
     fstps   -16(%ebp)  # Stocker le résultat (float)
 
-    # Appel du constructeurç
-    push %eax
-    leal    -24(%ebp), %eax  # Allouer de l'espace pour l'objet Complex sur la pile
-    movl    %eax, (%esp)     # Passer l'adresse de l'objet (this) comme premier paramètre
+    # Appel du constructeur
+    leal    -24(%ebp), %ecx  # Allouer de l'espace pour l'objet Complex sur la pile
+    movl    %ecx, (%esp)     # Passer l'adresse de l'objet (this) comme premier paramètre
+    
     flds    -8(%ebp)         # Charger la partie réelle (float)
     fstps   4(%esp)          # Stocker la partie réelle sur la pile (x)
     
     flds    -16(%ebp)        # Charger la partie imaginaire (float)
     fstps   8(%esp)          # Stocker la partie imaginaire sur la pile (y)
 
+    
+    pushl %esp
+    
     call    _ZN7ComplexC1Eff
 
     # Récupérer la valeur de retour du constructeur (adresse de l'objet dans %eax)
