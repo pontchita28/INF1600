@@ -1,7 +1,7 @@
 /*
 INF1600 - TP3 - Visualisation de la serie de Mandelbrot
-Matricules:
-Date: 1/10/2025
+Matricules: 2324529, 2108889
+Date: 13 mars 2024
 Version: 1.0
 Description:
 Vous devrez utiliser la fonction
